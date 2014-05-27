@@ -1,6 +1,8 @@
 Staticize
 ======
 
+![Staticize NPM](https://nodei.co/npm/staticize.png)
+
 > Staticize is a basic NPM module for routing to static files on an ExpressJS installation. For every route provided, Staticize will respond from a simple GET request to the route and respond with the given file location. If an error occurs, it will log directly to the console.
 
 ### Install
