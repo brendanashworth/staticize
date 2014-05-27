@@ -1,0 +1,26 @@
+{
+  "name": "staticize",
+  "version": "0.9.1",
+  "description": "Basic route -> static file mapping with ExpressJS",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boboman13/staticize"
+  },
+  "keywords": [
+    "expressjs",
+    "static",
+    "files",
+    "file",
+    "routing",
+    "static",
+    "file",
+    "routing"
+  ],
+  "author": "boboman13",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
