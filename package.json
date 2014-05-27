@@ -18,5 +18,8 @@
   ],
   "author": "boboman13",
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "mime": "~1.2.11"
+  }
 }

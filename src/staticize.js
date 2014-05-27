@@ -1,4 +1,5 @@
 var fs = require('fs');
+var mime = require('mime');
 
 module.exports = function(app, routes) {
 	// loop through routes
@@ -12,7 +13,9 @@ module.exports = function(app, routes) {
 					return;
 				}
 
-				res.status(200).send(data);
+				// get the mime type
+				var mimeType = mime.lookup(routes[index]);
+				res.status(200).set('Content-Type', mimeType).send(data);
 			});
 		});
 	}
