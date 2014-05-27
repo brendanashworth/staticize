@@ -13,12 +13,8 @@
   "keywords": [
     "expressjs",
     "static",
-    "files",
-    "file",
     "routing",
-    "static",
-    "file",
-    "routing"
+    "file"
   ],
   "author": "boboman13",
   "license": "MIT",
