@@ -4,21 +4,28 @@ var mime = require('mime');
 module.exports = function(app, routes) {
 	// loop through routes
 	for (var index in routes) {
-		// route: index, file location: routes[index]
-		(function (indexRoute) {
-			app.get(indexRoute, function(req, res) {
-				fs.readFile(routes[indexRoute], function(err, data) {
-					if (err) {
-						console.log('ERROR: Could not read file (' + err + ').');
-						res.status(500);
-						return;
-					}
+		// closure: route is the HTTP request route, path is the file path
+		(function (route, path) {
+			app.get(route, function(req, res) {
+				// create a readable stream
+				var stream = fs.createReadStream(path, {encoding: 'utf8'});
+				
+				stream
+					.once('error', function() {
+						res.status(500).end('Server error.');
+						console.error('ERROR (staticize): Could not open readable stream to ' + path);
+					})
+					.once('readable', function() {
+						// create headers
+						var headers = {
+							'Content-Type': mime.lookup(path)
+						};
 
-					// get the mime type
-					var mimeType = mime.lookup(routes[indexRoute]);
-					res.status(200).set('Content-Type', mimeType).send(data);
-				});
+						// write head then pipe response
+						res.writeHead(200, headers);
+						stream.pipe(res);
+					});
 			});
-		})(index);
+		})(index, routes[index]);
 	}
 };
